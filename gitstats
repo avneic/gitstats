@@ -52,8 +52,8 @@ conf = {
 }
 
 
-GNUPLOT_COMMON = 'set terminal png transparent size %s\nset size 1.0,1.0\n' % conf['img_small']
-GNUPLOT_BIG    = 'set terminal png transparent size %s\n' % conf['img_big']
+GNUPLOT_COMMON = 'set terminal png transparent size %s linewidth 2\nset size 1.0,1.0\n' % conf['img_small']
+GNUPLOT_BIG    = 'set terminal png transparent size %s linewidth 2\n' % conf['img_big']
 
 def getpipeoutput(cmds, quiet = False):
     global exectime_external
@@ -1434,8 +1434,10 @@ class GitStats:
                 sys.exit()
 
         # overwrite gnuplot variable sizes
-        GNUPLOT_COMMON = 'set terminal png transparent size %s\nset size 1.0,1.0\n' % conf['img_small']
-        GNUPLOT_BIG    = 'set terminal png transparent size %s\n' % conf['img_big']
+        global GNUPLOT_COMMON
+        global GNUPLOT_BIG
+        GNUPLOT_COMMON = 'set terminal png transparent size %s linewidth 2\nset size 1.0,1.0\n' % conf['img_small']
+        GNUPLOT_BIG    = 'set terminal png transparent size %s linewidth 2\n' % conf['img_big']
 
         if len(args) < 2:
             usage()
